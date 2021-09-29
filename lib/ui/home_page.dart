@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,6 +10,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Color purpleColor = Color(0xff655fb1);
+  Color purpleLightColor = Color(0xff6e69b6);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +32,35 @@ class _HomePageState extends State<HomePage> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Today'),
-                              Text('Wed, 18 Aug'),
+                              Text(
+                                'Today',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Text(
+                                'Wed, 18 Aug',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
                             ],
                           ),
                           Container(
+                            decoration: BoxDecoration(
+                              color: Colors.deepPurple[50],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             child: IconButton(
                               onPressed: () {},
                               icon: Icon(Icons.calendar_today_outlined),
+                              color: purpleColor,
                             ),
                           )
                         ],
@@ -44,9 +69,10 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         child: Container(
                           height: 200,
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 24),
                           decoration: BoxDecoration(
-                            color: Colors.deepPurpleAccent[200],
+                            color: purpleColor,
                             borderRadius: BorderRadius.circular(24),
                           ),
                           child: Row(
@@ -68,21 +94,21 @@ class _HomePageState extends State<HomePage> {
                                         circularStrokeCap:
                                             CircularStrokeCap.round,
                                         progressColor: Colors.white,
+                                        backgroundColor:
+                                            Colors.white.withOpacity(0.2),
                                         center: Padding(
                                           padding: const EdgeInsets.all(16),
                                           child: Container(
                                             height: double.infinity,
                                             width: double.infinity,
                                             decoration: BoxDecoration(
-                                              color:
-                                                  Colors.deepPurpleAccent[100],
+                                              color: purpleLightColor,
                                               shape: BoxShape.circle,
                                             ),
                                             padding: EdgeInsets.all(8),
                                             child: Container(
                                               decoration: BoxDecoration(
-                                                color: Colors
-                                                    .deepPurpleAccent[200],
+                                                color: purpleColor,
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Column(
@@ -122,9 +148,120 @@ class _HomePageState extends State<HomePage> {
                                   ],
                                 ),
                               ),
+                              SizedBox(
+                                width: 24,
+                              ),
                               Expanded(
                                 flex: 4,
-                                child: Placeholder(),
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Carbs',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 4),
+                                            child: LinearPercentIndicator(
+                                              padding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.white.withOpacity(0.2),
+                                              progressColor: Colors.white,
+                                              percent: 200 / 323,
+                                            ),
+                                          ),
+                                          Text(
+                                            '200 / 323g',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w300,
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Proteins',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 4),
+                                            child: LinearPercentIndicator(
+                                              padding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.white.withOpacity(0.2),
+                                              progressColor: Colors.white,
+                                              percent: 100 / 129,
+                                            ),
+                                          ),
+                                          Text(
+                                            '100 / 129g',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w300,
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Fats',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 4),
+                                            child: LinearPercentIndicator(
+                                              padding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.white.withOpacity(0.2),
+                                              progressColor: Colors.white,
+                                              percent: 24 / 85,
+                                            ),
+                                          ),
+                                          Text(
+                                            '24 / 85g',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w300,
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -314,9 +451,88 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
+                        child: IntrinsicHeight(
+                          child: Row(
+                            children: [
+                              Column(
+                                children: [
+                                  CircularPercentIndicator(
+                                    radius: 32,
+                                    percent: 0.6,
+                                    lineWidth: 4,
+                                    progressColor: Colors.teal,
+                                    backgroundColor: Colors.teal[100]!,
+                                  ),
+                                  IntrinsicHeight(
+                                    child: VerticalDivider(
+                                      color: Colors.grey,
+                                      width: 1.5,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Breakfast",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Text(
+                                          '407 kcal',
+                                          style:
+                                              TextStyle(color: Colors.grey),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          height: 48,
+                                          width: 48,
+                                          decoration: BoxDecoration(
+                                            color: Colors.blue[50],
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              '☕',
+                                              style: TextStyle(fontSize: 24),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text('Espresso coffee'),
+                                              Text('30 ml'),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -338,9 +554,13 @@ class _HomePageState extends State<HomePage> {
                           Icon(
                             Icons.home,
                             size: 28,
+                            color: purpleColor,
                           ),
                           SizedBox(height: 4),
-                          CircleAvatar(radius: 4)
+                          CircleAvatar(
+                            radius: 4,
+                            backgroundColor: purpleColor,
+                          )
                         ],
                       ),
                       Column(
@@ -349,6 +569,7 @@ class _HomePageState extends State<HomePage> {
                           Icon(
                             Icons.search,
                             size: 28,
+                            color: purpleColor,
                           ),
                           SizedBox(height: 4),
                           // CircleAvatar(
@@ -358,12 +579,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.deepPurpleAccent[200],
+                          color: purpleColor,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.qr_code_scanner),
+                          icon: Icon(Icons.qr_code_scanner, color: Colors.white,),
                         ),
                       ),
                       Column(
@@ -372,6 +593,7 @@ class _HomePageState extends State<HomePage> {
                           Icon(
                             Icons.bar_chart,
                             size: 28,
+                            color: purpleColor,
                           ),
                           SizedBox(height: 4),
                           // CircleAvatar(
@@ -385,6 +607,7 @@ class _HomePageState extends State<HomePage> {
                           Icon(
                             Icons.person,
                             size: 28,
+                            color: purpleColor,
                           ),
                           SizedBox(height: 4),
                           // CircleAvatar(
