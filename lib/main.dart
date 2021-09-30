@@ -5,6 +5,9 @@ void main() {
   runApp(MyApp());
 }
 
+Color purpleColor = Color(0xff655fb1);
+Color purpleLightColor = Color(0xff6e69b6);
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
